@@ -2,8 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
 
-// 
-// 
+// 9-11부터 9-17까지
+// 글을 수정한 후에 조회 페이지로 이동
 
 function Header(props) {
 
@@ -68,12 +68,12 @@ function Create(props) {
   )
 }
 
-// prop을 사용하여 입력필드에 추가했더니 값을 변경할 수 없는 문제가 발생함
-// 그래서 prop를 상태값으로 변경
-// ?? 상태가 prop보다 우선순위가 높나?
+// prop을 사용하여 입력필드에 값을 설정하면 값이 변경되지 않는 문제가 발생함
+// prop은 부모 컴포넌트에서 전달받은 값이므로 자식 컴포넌트에서 직접 변경할 수 없음
+// 이 문제를 해결하기 위해 prop을 상태값으로 변경하여 관리
 function Update(props) {
 
-  // 제목과 본문 상태값 생성
+  // props으로 전달받은 제목과 본문을 상태로 변경하여 관리
   const [title, setTitle] = useState(props.title);
   const [body, setBody] = useState(props.body);
 
@@ -86,9 +86,9 @@ function Update(props) {
         const body = event.target.body.value;
         props.onUpdate(title, body);
       }}>
-        {/* prop를 상태값으로 수정 */}
-        {/* 그래도 입력값은 변경이 안됨.. */}
-        {/* onChange 이벤트를 추가하여 우리가 입력한 값을 확인 */}
+        {/* prop을 사용했을 때 입력값이 변경되지 않는 문제 발생.. */}
+        {/* prop을 상태값으로 변경 */}
+        {/* onChange 이벤트를 추가하여 사용자가 입력한 값을 상태로 업데이트 */}
         <p>
           <input type="text" name="title" placeholder='title' value={title} onChange={event=>{
             console.log(event.target.value);
