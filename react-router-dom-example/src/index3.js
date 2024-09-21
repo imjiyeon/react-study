@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // 명령: npm install react-router-dom
 
 /* 라우팅 사용하기 */
+// Router란? 사용자가 특정 URL을 호출하면 해당 경로에 맞는 컴포넌트를 생성하는 기능
 
 function Home(){
   return (

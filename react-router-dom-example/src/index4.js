@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes, Link, HashRouter, NavLink } from 'react-r
 
 /* 링크 사용하기 */
 
-// Link: 링크를 클릭해도 페이지가 리로드되지 않게 구현하는 컴포넌트
+// Link: 링크를 클릭했을 때, 다른 페이지로 이동해도 페이지가 리로드되지 않게 처리하는 기능
 
 function Home(){
   return (
