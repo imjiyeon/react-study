@@ -1,0 +1,7 @@
+/* 불필요한 코드 제거 */
+
+/* 내비게이션에 사용자가 위치한 곳을 표시 */
+.active {
+    background-color: tomato;
+    text-decoration: none;
+}
