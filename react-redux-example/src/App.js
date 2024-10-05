@@ -12,6 +12,7 @@ import {Provider, useSelector, useDispatch} from 'react-redux';
 // 리덕스를 통해 상태를 관리한다
 
 // redux란? 상태를 중앙에서 관리하고 컴포넌트들이 상태를 공유할 수 있도록 도와주는 도구
+// 자바스크립트 프로젝트라면 리덕스를 사용할 수 있음
 // react-redux란? 리액트와 리덕스를 연결하는 도구
 // redux와 react-redux는 별도의 패키지라서 설치 필요
 // 설치 명령: npm install redux react-redux
