@@ -6,7 +6,7 @@ import './App.css';
 // 컨텐츠를 변경하면 모든 태그가 한번에 변경된다
 function Header() {
   return <header>
-  <h1><a href='/'>React</a></h1>
+  <h1><a href='/'>Web</a></h1>
   </header>
 }
 
@@ -49,8 +49,6 @@ function Sample() {
 function App() {
   return (
     <div className="App">
-      <Header></Header>
-      <Header></Header>
       <Header></Header>
       <Nav></Nav>
       <Article></Article>
