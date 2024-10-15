@@ -3,6 +3,7 @@ import './App.css';
 
 /* 컴포넌트에 이벤트 추가하기 */
 
+// props로 전달받은 이벤트를 꺼내서 실행
 function Header(props) {
 
   console.log('props', props.title);
@@ -52,6 +53,7 @@ function Article(props) {
   </article>
 }
 
+// 컴포넌트를 사용하는 쪽에서 이벤트 정의
 function App() {
 
   const topics = [
