@@ -7,14 +7,15 @@ import React from 'react';
 function App() {
 
   // 변수 선언
-  const conent = 'Hi';
+  const content = 'Hi';
+  const namePlaceholder = "이름을 입력하세요!";
 
   // jsx에서 자바스크립트를 사용할 때는 {}중괄호를 사용
   // 속성도 마찬가지
   return (
     <div>
-      <div>{conent}</div>
-      <input value={conent}></input>
+      <div>{content}</div>
+      <input placeholder={namePlaceholder}></input>
     </div>
   );
 }
