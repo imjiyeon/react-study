@@ -3,10 +3,15 @@ import './App.css';
 
 // props: 외부에서 컴포넌트로 전달한 속성
 
+{/* <img src="image.jpg" width="100" height="100"></img> */}
+
 function Header(props) {
 
   // props로 전달한 title 값 꺼내기
   console.log('props', props.title);
+
+  // props는 read only여서 수정하면 에러남
+  // props.title = 'WEB';
 
   // JSX에서 {}중괄호는 문자열이 아니라 표현식으로 처리된다
   return <header>
