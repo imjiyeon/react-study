@@ -4,7 +4,7 @@ import './App.css';
 // styled-components 패키지에서 styled 함수 가져오기
 
 // import styled 까지만 입력한 후, 자동 완성
-import styled from 'styled-components';
+import style from 'styled-components';
 
 // 스타일드 컴포넌트란? 컴포넌트를 만들때 CSS를 그대로 작성할 수 있도록 도와주는 가능
 
