@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Route, Routes, NavLink } from 'react-router-dom';
 
+// api 호출을 위해 비동기 함수 정의
 async function fetchBoardList(){
 
   const response = await axios.get('http://localhost:8080/board/list', {
@@ -21,7 +22,10 @@ function BoardList(){
 
   const [list, setList] = useState([]);
 
+  // useEffect: 훅으로 BoardList 컴포넌트가 생성될 때 데이터를 가져오기위해 사용
   useEffect(() => {
+    // fetchBoardList 비동기 함수를 호출하기 위해 await을 써야하는데
+    // useEffect 안에서 바로 쓸수가 없어서 비동기함수를 한번더 만들고 사용
     const getData = async () => {
       const data = await fetchBoardList();
       setList(data); // 데이터를 상태에 저장
