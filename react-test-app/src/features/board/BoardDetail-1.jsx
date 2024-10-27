@@ -9,25 +9,18 @@ function BoardDetail(){
 
     const navigate = useNavigate();
 
+    // 게시물 데이터를 저장하기 위한 state 선언
     const [board, setBoard] = useState();
 
     const apicall = async () => {
+        // 그 안에서 api함수 호출
         const response = await fetchBoardDetail(params.boardNo);
         if (response) {
           console.log(response);
           setBoard(response);
         }
     }
-
-    // 1. useEffect를 사용하면 처음에 화면이 렌더링되고
-    // 2. useEffect 안에 있는 apicall이 실행되고
-    // 3. setState로 화면이 다시 렌더링 되면서 board 데이터가 출력됨
-    // 처음 렌더링 될때: 화면에 데이터 없음
-    // 두번째로 렌더링 될때: 화면에 데이터 있음
-
-    useEffect(()=>{
-        apicall();
-    }, []); //빈배열을 넣어서 처음 렌더링 때만 호출
+    apicall(); // API가 무한으로 호출됨
 
     return (
         <div>
