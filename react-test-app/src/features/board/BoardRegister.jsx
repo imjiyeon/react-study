@@ -1,10 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // 컴포넌트의 상태와 관련되 함수는 컴포넌트 안에 선언하는 것이 좋다
 // 컴포넌트와 상관없는 일반함수는 외부에 선언하는 것이 좋다
 
 function BoardRegister() {
+
+  const navigate = useNavigate();
+
   const [board, setBoard] = useState({
       title: '',
       content: ''
@@ -43,6 +47,8 @@ function BoardRegister() {
 
     if (response.status !== 201) {
       throw new Error(`api error: ${response.status} ${response.statusText}`);
+    } else {
+      navigate('/list');
     }
 
   };

@@ -1,16 +1,18 @@
 import { fetchBoardDetail } from "../../api/BoardAPI";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 function BoardModify(){
+
+  const params = useParams();
 
   const navigate = useNavigate();
 
     const [board, setBoard] = useState();
 
     const apicall = async () => {
-        const response = await fetchBoardDetail();
+        const response = await fetchBoardDetail(params.boardNo);
         if (response) {
           console.log(response);
           setBoard(response);

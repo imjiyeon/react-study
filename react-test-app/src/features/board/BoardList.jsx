@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // api 호출을 위해 비동기 함수 정의
 async function fetchBoardList(){
@@ -17,6 +18,8 @@ async function fetchBoardList(){
 }
   
 function BoardList(){
+
+  const navigate = useNavigate();
   
   const [list, setList] = useState([]);
   
@@ -48,7 +51,7 @@ function BoardList(){
               list && list.map((board)=>
                 (
                   <tr key={board.no}>
-                    <td>{board.no}</td>
+                    <td onClick={()=>{ navigate(`/detail/${board.no}`) }}>{board.no}</td>
                     <td>{board.title}</td>
                     <td>{board.writer}</td>
                     <td>{board.regDate}</td>

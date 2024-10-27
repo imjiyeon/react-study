@@ -1,8 +1,12 @@
 import { fetchBoardDetail } from "../../api/BoardAPI";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function BoardDetail(){
+
+    // URL 경로에 포함된 파라미터 꺼내기
+    const params = useParams();
+    console.log(params);
 
     const navigate = useNavigate();
 
@@ -13,7 +17,7 @@ function BoardDetail(){
     // 다시 비동기 함수 선언
     const apicall = async () => {
         // 그 안에서 api함수 호출
-        const response = await fetchBoardDetail();
+        const response = await fetchBoardDetail(params.boardNo);
         if (response) {
           console.log(response);
           setBoard(response);
@@ -32,11 +36,6 @@ function BoardDetail(){
     useEffect(()=>{
         apicall();
     }, []); //빈배열을 넣어서 처음 렌더링 때만 호출
-    
-    function handleModify(){
-        // 페이지 이동
-        navigate('/modify');
-    }
 
     return (
         <div>
@@ -51,7 +50,7 @@ function BoardDetail(){
                         <div>{board.modDate}</div>
                     </div>
                     
-                    <button onClick={handleModify}>수정</button>
+                    <button onClick={ ()=>{ navigate(`/modify/${board.no}`) } }>수정</button>
                 </div>
             }
         </div>

@@ -16,15 +16,14 @@ function App() {
       <ul>
         <li><NavLink to='/list'>list</NavLink></li>
         <li><NavLink to='/register'>register</NavLink></li>
-        <li><NavLink to='/modify'>modify</NavLink></li>
-        <li><NavLink to='/detail'>detail</NavLink></li>
       </ul> 
 
+      {/* 상세조회는 url 경로에파라미터 추가 */}
       <Routes>
         <Route path='/list' element={<BoardList />}></Route>
         <Route path='/register' element={<BoardRegister />}></Route>
-        <Route path='/modify' element={<BoardModify />}></Route>
-        <Route path='/detail' element={<BoardDetail />}></Route>
+        <Route path='/modify/:boardNo' element={<BoardModify />}></Route>
+        <Route path='/detail/:boardNo' element={<BoardDetail />}></Route>
       </Routes>
 
     </div>
