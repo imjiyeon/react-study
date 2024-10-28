@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
+// 컴포넌트를 몇개 더 추가하고 내용 변경하기
+
 // 내용 변경 web->react
 // Header를 사용한 부분이 한번에 변경됨
 function Header() {

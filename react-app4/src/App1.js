@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
+// 불필요한 코드 모두 삭제
+// 헤더, 네비게이션, 아티클 태그를 작성
+
 function App() {
   return (
     <div className="App">

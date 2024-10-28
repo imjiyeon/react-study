@@ -1,11 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 
-// 내용 변경 web->react
-// Header를 사용한 부분이 한번에 변경됨
+// 앞에서 작성한 태그를 컴포넌트로 만들기
+
+// 사용자 정의 함수는 컴포넌트라고 부른다
+// 컴포넌트는 대문자로 시작해야 한다
+
+// 함수를 만들고 반환값으로 이전에 작성했던 코드를 복사하여 넣는다
 function Header() {
   return <header>
-  <h1><a href='/'>React</a></h1>
+  <h1><a href='/'>Web</a></h1>
   </header>
 }
 
@@ -26,12 +30,10 @@ function Article() {
   </article>
 }
 
-// 헤더를 복사하여 2개 더 추가
+// 코드를 지우고 컴포넌트를 사용한다
 function App() {
   return (
     <div className="App">
-      <Header></Header>
-      <Header></Header>
       <Header></Header>
       <Nav></Nav>
       <Article></Article>
@@ -40,3 +42,6 @@ function App() {
 }
 
 export default App;
+
+// 코드를 컴포넌트로 만들면 재사용할 수 있다
+// 내용을 한번에 변경할 수 있다
