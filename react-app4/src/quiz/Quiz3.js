@@ -1,3 +1,5 @@
+// 중첩된 컴포넌트 구조 만들기
+
 function Content() {
   return <div>Content Component</div>;
 }
