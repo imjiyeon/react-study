@@ -1,5 +1,6 @@
-import './App.css';
 import { useState } from 'react';
+
+// 글자 수를 세는 앱 만들기
 
 function App() {
 
