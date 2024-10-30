@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
 
-// 1. 글 등록 기능 추가하기
+// 게시물 등록 컴포넌트 만들기
 
 function Header(props) {
 
@@ -43,24 +43,13 @@ function Article(props) {
   </article>
 }
 
-// 새로운 컴포넌트 생성
-// 폼을 생성하고 제목과 본문을 입력하는 필드와 전송 버튼 추가
+// 게시물 등록 컴포넌트 생성
+// 폼에 제목필드, 내용필드, 전송버튼 추가
 function Create(props) {
   return (
     <article>
       <h2>Create</h2>
-      {/* onCreate 함수를 호출하기 위해서 form 태그에 submit 이벤트 처리 
-          onSubmit은 폼 안에 submit 버튼을 클릭하면 발생함
-      */}
-      <form onSubmit={event => {
-        event.preventDefault(); // 전송버튼을 클릭하면 화면이 리로드됨. 기본 동작을 방지
-        // 폼에서 사용자가 입력한 제목과 본문을 꺼내온다
-        // 해당 값들은 event.target을 통해 가져올 수 있다
-        // 폼 태그에서 발생한 이벤트기 때문에 event.target은 form
-        const title = event.target.title.value;
-        const body = event.target.body.value;
-        props.onCreate(title, body); // props를 통해 함수를 호출하면 title과 body를 전달
-      }}>
+      <form>
         <p>
           <input type="text" name="title" placeholder='title'></input>
         </p>
@@ -74,15 +63,12 @@ function Create(props) {
     </article>
   )
 }
-// 이제 topics 변수에 새로운 요소를 축하하여 목록을 업데이트한다
 
-// create 버튼을 클릭하면글을 생성하는 폼이 나온다
+// create 버튼을 클릭하면 글을 생성하는 폼이 나온다
 function App() {
 
   let [mode, setMode] = useState('WELCOME');
-
   let [id, setId] = useState(null);
-
   let content = null;
 
   const topics = [
@@ -105,12 +91,7 @@ function App() {
     content = <Article title={title} body={body}></Article>
   } else if(mode === "CREATE") {
     // "CREATE" 모드면 Create 컴포넌트 생성
-    // Create 컴포넌트를 사용할 때, 후속 처리를 하기 위해 prop에 onCreate 함수 전달
-    // 사용자가 버튼을 클릭하면 해당함수가 실행됨
-    content = <Create onCreate={(title, body)=>{
-      // 여기서 해야할 작업은? topics에 새로운 요소를 추가하여 화면에 새로운 목록 표시하기 
-    }}>
-    </Create>
+    content = <Create></Create>
   }
 
   return (
