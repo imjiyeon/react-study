@@ -10,13 +10,16 @@ import { useState } from 'react';
 
 function App() {
 
+  // state는 컴포넌트의 생명주기를 관리하는 데이터이므로
+  // 일반함수에서는 사용할 수 없음
+  
   // count를 저장하는 state 생성
   const [count, setCount] = useState(0); //초기값
 
   // 증가, 감소, 초기화 이벤트 함수 정의
-  function down() {
-    setCount(count - 1);
-  }
+  // function down() {
+  //   setCount(count - 1);
+  // }
 
   function reset() {
     setCount(0);
@@ -29,9 +32,12 @@ function App() {
   // 각 버튼에 이벤트 함수 설정
   return (
     <div>
-      <input type='button' value="-" onClick={down}></input>
+      <input type='button' value="-" onClick={()=>{
+        setCount(count - 1);
+      }}></input>
       <input type='button' value="0" onClick={reset}></input>
       <input type='button' value="+" onClick={up}></input>
+      
       {/* 현재 count값 출력 */}
       <span className='count-span'>{count}</span>
     </div>
