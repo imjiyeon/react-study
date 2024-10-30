@@ -82,7 +82,7 @@ function App() {
     {id:3, title:'javascript', body:'javascript is ...'},
   ]);
 
-  // 다음 ID를 관리하는 상태 생성
+  // 다음 ID를 저장할 id 생성
   let [nextId, setNextId] = useState(4); //현재 요소가 3개니까 초기값은 4
 
   if(mode === "WELCOME"){
@@ -98,16 +98,20 @@ function App() {
     }
     content = <Article title={title} body={body}></Article>
   } else if(mode === "CREATE") {
-    // 새로운 요소의 프로퍼티와 파라미터 이름이 헷갈리니까 파라미터 이름 변경
-    content = <Create onCreate={(_title, _body)=>{
+
+    content = <Create onCreate={(title, body)=>{
       // nav 배열에 새로운 요소 추가 (아이디값은 어쩌지? 별도로 관리)
-      const newTopic = {id:nextId, title: _title, body: _body};
+      const newTopic = {id:nextId, title: title, body: body};
       // topics.push(newTopic); // 요소 추가
+      // 그런데 topics는 일반 배열이기 때문에 값을 추가해도 화면은 그대로
+      // -> topics을 state로 변경할 것
+
       // setTopics(topics); // topics 업데이트 (주소값: 100번지)
 
-      // 문제: 화면에 변화가 없음
+      // state를 변경해도 화면은 그대로
       // 원인: 상태는 값에 변화가 있어야 컴포넌트가 다시 렌더링됨
       // setTopics(newTopics);은 topics가 배열(객체)이라 주소값이 복사됨. 주소값이 그대로여서 변화가 없는것
+      // 100번지 -> 100번지
       // -> 따라서 객체를 복사하여 새로운 객체로 생성해야함
 
       const newTopics = [...topics]; // 스프레드 연산자로 배열을 분해한 후, 새로운 배열로 생성
@@ -130,9 +134,9 @@ function App() {
         setMode('WELCOME');
       }}></Header>
 
-      <Nav topics={topics} onChangeMode={function(_id){
+      <Nav topics={topics} onChangeMode={function(id){
         setMode('READ');
-        setId(_id);
+        setId(id);
       }}></Nav>
       {content}
 

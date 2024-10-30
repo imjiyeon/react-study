@@ -119,9 +119,9 @@ function App() {
         setMode('WELCOME');
       }}></Header>
 
-      <Nav topics={topics} onChangeMode={function(_id){
+      <Nav topics={topics} onChangeMode={function(id){
         setMode('READ');
-        setId(_id);
+        setId(id);
       }}></Nav>
       {content}
 
