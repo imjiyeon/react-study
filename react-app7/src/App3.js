@@ -43,6 +43,7 @@ function Article(props) {
   </article>
 }
 
+// !! state는 컴포넌트의 생명주기를 관리하는 데이터이므로 일반함수에서는 사용할 수 없음
 function App() {
 
   let [mode, setMode] = useState('WELCOME');
