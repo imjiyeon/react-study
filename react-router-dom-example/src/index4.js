@@ -6,10 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes, Link, NavLink } from 'react-router-dom';
 
 // a태그 대신 Link컴포넌트 사용하기
-
 // Link: 다른 페이지로 이동할때 페이지가 리로드되지 않게 처리하는 기능
 
+// Link는 페이지 이동시 파일을 다시 불러오지 않고
+// 필요한 컴포넌트만 다시 생성하여 속도가 빠름
+
 function Home() {
+  console.log('Home..'); // 어떤 컴포넌트가 렌더링되는지 확인
   return (
     <div>
       <h2>Home</h2>
@@ -19,6 +22,7 @@ function Home() {
 }
 
 function Topics() {
+  console.log('Topics..'); // 어떤 컴포넌트가 렌더링되는지 확인
   return (
     <div>
       <h2>Topics</h2>
@@ -28,6 +32,7 @@ function Topics() {
 }
 
 function Contact() {
+  console.log('Contact..'); // 어떤 컴포넌트가 렌더링되는지 확인
   return (
     <div>
       <h2>Contact</h2>
@@ -37,6 +42,7 @@ function Contact() {
 }
 
 function App() {
+  console.log('App..'); // 어떤 컴포넌트가 렌더링되는지 확인
 
   return (
     <div>

@@ -11,7 +11,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // Router를 사용하여 페이지 이동하기
 // Router: 사용자가 특정 URL을 호출하면 해당 경로에 맞는 컴포넌트를 생성하는 기능
 
+// a태그로 페이지를 이동하면 index.html 파일이 다시 로드되어
+// 모든 컴포넌트가 다시 생성됨
+
 function Home() {
+  console.log('Home..'); // 어떤 컴포넌트가 렌더링되는지 확인
   return (
     <div>
       <h2>Home</h2>
@@ -21,6 +25,7 @@ function Home() {
 }
 
 function Topics() {
+  console.log('Topics..'); // 어떤 컴포넌트가 렌더링되는지 확인
   return (
     <div>
       <h2>Topics</h2>
@@ -30,6 +35,7 @@ function Topics() {
 }
 
 function Contact() {
+  console.log('Contact..'); // 어떤 컴포넌트가 렌더링되는지 확인
   return (
     <div>
       <h2>Contact</h2>
@@ -39,7 +45,7 @@ function Contact() {
 }
 
 function App() {
-
+  console.log('App..'); // 어떤 컴포넌트가 렌더링되는지 확인
   return (
     <div>
       <h1>Hello React Router DOM</h1>
