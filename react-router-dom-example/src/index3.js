@@ -45,6 +45,7 @@ function App() {
     <div>
       <h1>Hello React Router DOM</h1>
 
+      {/* Home, Topics, Contact로 이동하는 링크 */}
       <ul>
         <li><a href='/'>Home</a></li>
         <li><a href='/topics'>Topics</a></li>
