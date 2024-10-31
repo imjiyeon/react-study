@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Route, Routes, NavLink, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, NavLink } from 'react-router-dom';
 
-// useParam 훅을 사용하여 선택한 토픽을 출력
+// topics 리스트 생성
+// Topic 컴포넌트 추가
+// topics 리스트를 생성하여 자동으로 링크 생성
 
 function Home() {
   return (
@@ -15,59 +17,48 @@ function Home() {
   );
 }
 
+// topic 리스트 생성
 let topics = [
   { id: 1, title: 'HTML', description: 'HTML is ...' },
   { id: 2, title: 'JS', description: 'JS is ...' },
   { id: 3, title: 'React', description: 'React is ...' }
 ]
 
+// Topic 컴포넌트 추가: 특정 토픽의 내용을 출력
 function Topic() {
 
-  // useParams 훅을 사용하여 URL의 파라미터 가져오기
-  let params = useParams();
-  console.log(params);
-
-  // topic id 파라미터 꺼내기
-  let topic_id = params.topic_id;
-
-  // 페이지 못찾았을 때 초기값 설정
-  let selected_topic = {
-    title: 'Sorry',
-    description: 'Not found'
-  };
-
-  // topics 배열에서 id에 해당하는 topic 찾기
-  for (let t of topics) {
-    if (t.id === Number(topic_id)) {
-      selected_topic = t;
-    }
-  }
-
-  // 찾은 데이터 출력하기
   return (
     <div>
-      <h3>{selected_topic.title}</h3>
-      {selected_topic.description}
+      <h3>Topic</h3>
+      Topic...
     </div>
   );
 }
 
 function Topics() {
 
+  // Link 리스트
   let lis = [];
 
+  // topics를 사용하여 링크 생성
   for (let t of topics) {
     lis.push(<li><NavLink to={'/topics/' + t.id}>{t.title}</NavLink></li>);
   }
 
+  // 전체 토픽 목록 표시
   return (
     <div>
       <h2>Topics</h2>
 
+      {/* 기존코드를 삭제하고 변수로 변경 */}
       <ul>
         {lis}
       </ul>
 
+      {/* 기존코드를 삭제하고 Route 하나로 처리 */}
+      {/* URL에 포함된 숫자를 파라미터로 처리 */}
+      {/* 예를 들어 /1이 호출되면 '1'이 파라미터(topic_id)로 전달됨 */}
+      {/* 토픽 컴포넌트를 반환 */}
       <Routes>
         <Route path='/:topic_id' element={<Topic></Topic>}></Route>
       </Routes>
