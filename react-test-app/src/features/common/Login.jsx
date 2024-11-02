@@ -3,10 +3,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../../store/memberSlice";
 
 function Login() {
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const [user, userUser] = useState({
       id: '',
@@ -36,6 +40,10 @@ function Login() {
     if (response.status === 200) {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
+      
+      // 리듀서 호출
+      dispatch(loginSuccess(response.data.user));
+
       navigate('/');
     } else {
       throw new Error(`api error: ${response.status} ${response.statusText}`);
