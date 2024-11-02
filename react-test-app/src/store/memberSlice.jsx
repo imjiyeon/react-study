@@ -13,7 +13,8 @@ const memberSlice = createSlice({
     },
     logoutSuccess: (state) => {
       state.member = null;
-      // localStorage.removeItem('member');
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
     },
   },
 });

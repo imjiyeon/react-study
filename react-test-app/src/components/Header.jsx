@@ -29,7 +29,6 @@ function Header() {
                 dispatch(logoutSuccess());
                 navigate('/');
              }}>logout</button>
-             {member.name}님 안녕하세요
             </> 
         }
         {

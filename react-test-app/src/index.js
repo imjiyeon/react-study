@@ -6,6 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import { loginSuccess } from './store/memberSlice';
+
+// 로그인 정보 유지하기
+// 브라우저를 다시 열었을 때 로컬 스토리지에 인증정보가 있는지 확인
+// 인증정보가 있으면 로그인 처리
+const userStr = localStorage.getItem('user');
+if (userStr !== null) {
+  const userObj = JSON.parse(userStr);
+  store.dispatch(loginSuccess(userObj));
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

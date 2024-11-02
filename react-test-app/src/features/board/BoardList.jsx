@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 // api 호출을 위해 비동기 함수 정의
 async function fetchBoardList(){
@@ -37,6 +37,8 @@ function BoardList(){
   }, []);
   
   return (
+    <>
+        <NavLink to='/register'>register</NavLink>
         <table>
           <thead>
             <tr>
@@ -61,6 +63,7 @@ function BoardList(){
             }
           </tbody>
         </table>
+    </>
   );
 }
   
