@@ -10,7 +10,6 @@ function Main() {
         <li><NavLink to='/list'>list</NavLink></li>
         <li><NavLink to='/register'>register</NavLink></li>
         <li><NavLink to='/memberregister'>회원가입</NavLink></li>
-        <li><NavLink to='/login'>로그인</NavLink></li>
       </ul>
 
     </div>
