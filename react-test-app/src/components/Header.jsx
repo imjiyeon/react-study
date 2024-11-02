@@ -21,26 +21,28 @@ function Header() {
         {
             member === null ? 
             <>
-                <button onClick={()=>{ navigate('/login') }}>login</button>
+                <button onClick={()=>{ navigate('/memberregister') }}>회원가입</button>
+                <button onClick={()=>{ navigate('/login') }}>로그인</button>
             </> 
             :
             <>
             <button onClick={()=>{ 
                 dispatch(logoutSuccess());
                 navigate('/');
-             }}>logout</button>
+             }}>로그아웃</button>
             </> 
         }
         {
             member !== null && member.role === 'ROLE_USER' && 
                 <> 
-                <button onClick={()=>{ navigate('/list') }}>boardlist</button>       
+                <button onClick={()=>{ navigate('/list') }}>자유게시판</button>       
                 </>
         }
         {
             member !== null && member.role === 'ROLE_ADMIN' && 
                 <> 
-                <button onClick={()=>{ navigate('/list') }}>memberlist</button>          
+                <button onClick={()=>{ navigate('/list') }}>자유게시판</button>      
+                <button onClick={()=>{ navigate('/list') }}>회원게시판</button>          
                 </>
         }  
 

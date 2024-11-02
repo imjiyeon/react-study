@@ -12,10 +12,6 @@ function Main() {
         member!==null && `안녕하세요. ${member.name} 님`
       }
 
-      <ul>
-        <li><NavLink to='/memberregister'>회원가입</NavLink></li>
-      </ul>
-
     </div>
   )
 }
