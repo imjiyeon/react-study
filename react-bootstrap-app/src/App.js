@@ -1,7 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './features/Home';
-// import NavBarElement from './components/NavBar/NavBarElement';
 import Layout from './components/Layout';
 import BoardList from './features/BoardList';
 import BoardRegister from './features/BoardRegister';

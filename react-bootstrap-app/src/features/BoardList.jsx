@@ -1,67 +1,66 @@
 // rafce => 자동완성
-import React from 'react'
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
+import { Button, Table } from 'react-bootstrap';
+import { CustomCard } from '../components/CustomCard';
+import { useNavigate } from "react-router-dom";
 
-const ListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  overflow-y: auto;
+const BoardListContainer = styled.div`
   width: 100%;
   height: 100%;
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background: #ccc;
-  }
-`;
-
-const BoardWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  cursor: pointer;
+  flex-direction: column;
+  gap: 10px;
 `;
 
-const BoardTitle = styled.h4`
-  font-weight: 400;
-  font-size: 18px;
-  color: #4D4D4D;
-  text-align: left;
-  margin-bottom: 20px;
-`;
-
-const BoardContent = styled.p`
-  font-weight: 700;
-  font-size: 20px;
-  color: #000;
-  text-align: left;
+// 아이템을 비율로 배치
+const Row = styled.div`
+  display: grid;
+  grid-template-columns: 5fr 1fr;
 `;
 
 let data = [
-  {no:1, title:'1번', content:'1번입니다'},
-  {no:2, title:'2번', content:'2번입니다'},
-  {no:3, title:'3번', content:'3번입니다'},
+  {no:1, title:'1번', content:'1번입니다', writer: '둘리'},
+  {no:2, title:'2번', content:'2번입니다', writer: '또치'},
+  {no:3, title:'3번', content:'3번입니다', writer: '도우너'},
 ];
 
-function BoardList() {
+function BoardList(){
 
-  return (
-    <ListContainer>
-    { data.map((board)=>{
-      return (
-      <BoardWrapper>
-        <Link to={'/board/read/'+board.no}><BoardTitle>{board.no}</BoardTitle></Link>
-        <BoardTitle>{board.title}</BoardTitle>
-        <BoardContent>{board.content}</BoardContent>
-      </BoardWrapper>
-      )
-    })}
-    </ListContainer>
-  );
-};
+    const navigate = new useNavigate();
+
+    return (
+        <CustomCard>
+            <BoardListContainer>
+                <Row>
+                    <h3>게시물 목록</h3>
+                    <Button variant="primary" onClick={()=>{
+                        navigate('/board/register');
+                    }}>게시물 등록</Button>
+                </Row>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            data.map((board)=>{
+                                return <tr>
+                                    <td><Link to={'/board/read/'+board.no}>{board.no}</Link></td>
+                                    <td>{board.title}</td>
+                                    <td>{board.writer}</td>
+                                </tr>
+                            })
+                        }
+                    </tbody>
+                </Table>
+            </BoardListContainer>
+        </CustomCard>
+    );
+}
 
 export default BoardList;

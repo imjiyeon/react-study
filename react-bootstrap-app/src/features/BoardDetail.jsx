@@ -1,52 +1,50 @@
 // rafce => 자동완성
-import React from 'react'
 import styled from "styled-components";
+import { CustomCard } from '../components/CustomCard';
+import { Form, Button } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 
-const ListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  overflow-y: auto;
+const BoardDetailContainer = styled.div`
   width: 100%;
   height: 100%;
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background: #ccc;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
-
-const BoardTitle = styled.h4`
-  font-weight: 400;
-  font-size: 18px;
-  color: #4D4D4D;
-  text-align: left;
-  margin-bottom: 20px;
-`;
-
-const BoardContent = styled.p`
-  font-weight: 700;
-  font-size: 20px;
-  color: #000;
-  text-align: left;
-`;
-
-let board = {no:1, title:'1번', content:'1번입니다'}
 
 function BoardDetail() {
 
+  const navigate = new useNavigate();
+  
+  let board = {no:1, title:'1번', content:'1번입니다', writer:'둘리'}
+
   return (
-    <>
-      { board!==null && 
-      <>
-        <BoardTitle>{board.title}</BoardTitle>
-        <BoardContent>{board.content}</BoardContent>
-      </>
-      }
-    </>
-  );
-};
+        <CustomCard>
+            <BoardDetailContainer>
+                <h3>게시물 상세</h3>
+                {
+                  board !==null &&
+                  <>
+                    <Form.Group controlId="board.title">
+                      <Form.Label>제목</Form.Label>
+                      <Form.Control type="text" value={board.title} disabled readOnly></Form.Control>
+                    </Form.Group>
+                    <Form.Group controlId="board.content">
+                      <Form.Label>내용</Form.Label>
+                      <Form.Control as="textarea" rows={3} value={board.content} disabled readOnly/>
+                    </Form.Group>
+                    <Form.Group controlId="board.content">
+                      <Form.Label>작성자</Form.Label>
+                      <Form.Control type="text" value={board.writer} disabled readOnly></Form.Control>
+                    </Form.Group>
+                    <Button variant="primary" onClick={()=>{
+                        navigate(`/board/modify/ + ${board.no}`);
+                    }}>게시물 수정</Button>
+                  </>
+                }
+            </BoardDetailContainer>
+        </CustomCard>
+    );
+  };
 
 export default BoardDetail;

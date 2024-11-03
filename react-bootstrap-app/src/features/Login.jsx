@@ -1,45 +1,33 @@
-import React from 'react'
-import { Container, Inner } from '../components/Style';
-import { Autobox, CommonInfo, InfoStyle, CommonInput, CommonBtn, CustomForm } from '../components/Style';
+import styled from 'styled-components';
+import { Form, Button } from 'react-bootstrap';
+import { CustomCard } from '../components/CustomCard';
+
+const LoginContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
 
 const Login = () => {
+
   return (
-  <Container>
-    <Inner>
-      <CustomForm>
-            <Autobox>
-              <CommonInfo>
-                <InfoStyle>아이디</InfoStyle>
-              </CommonInfo>
-              <CommonInput
-                type=""
-                name=""
-                value=""
-                onChange=""
-              />
-            </Autobox>
-
-            <Autobox>
-              <CommonInfo>
-                <InfoStyle>패스워드</InfoStyle>
-              </CommonInfo>
-              <CommonInput
-                type=""
-                name=""
-                value=""
-                onChange=""
-              />
-            </Autobox>
-
-            <>
-              <CommonBtn type="submit" onClick="">
-                로그인
-              </CommonBtn>
-            </>
-      </CustomForm>      
-    </Inner>
-  </Container>
-  )
+    <CustomCard>
+      <LoginContainer>
+        <h3>로그인</h3>
+        <Form.Group controlId="board.title">
+          <Form.Label>아이디</Form.Label>
+          <Form.Control type="text"></Form.Control>
+        </Form.Group>
+        <Form.Group controlId="board.content">
+          <Form.Label>패스워드</Form.Label>
+          <Form.Control type="password"></Form.Control>
+        </Form.Group>
+        <Button variant="secondary">로그인</Button>
+      </LoginContainer>
+    </CustomCard>
+  );
 }
 
 export default Login

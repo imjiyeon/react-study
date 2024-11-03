@@ -1,44 +1,31 @@
-import React from 'react'
-import { Container, Inner } from '../components/Style';
-import { Autobox, CommonInfo, InfoStyle, CommonInput, CommonBtn, CustomForm } from '../components/Style';
+import styled from 'styled-components';
+import { Form, Button } from 'react-bootstrap';
+import { CustomCard } from '../components/CustomCard';
+
+const BoardModifyContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
 
 const BoardModify = () => {
   return (
-  <Container>
-    <Inner>
-      <CustomForm>
-            <Autobox>
-              <CommonInfo>
-                <InfoStyle>제목</InfoStyle>
-              </CommonInfo>
-              <CommonInput
-                type=""
-                name=""
-                value=""
-                onChange=""
-              />
-            </Autobox>
-
-            <Autobox>
-              <CommonInfo>
-                <InfoStyle>내용</InfoStyle>
-              </CommonInfo>
-              <CommonInput
-                type=""
-                name=""
-                value=""
-                onChange=""
-              />
-            </Autobox>
-
-            <>
-              <CommonBtn type="submit" onClick="">
-                등록
-              </CommonBtn>
-            </>
-      </CustomForm>      
-    </Inner>
-  </Container>
+    <CustomCard>
+      <BoardModifyContainer>
+        <h3>게시물 수정</h3>
+        <Form.Group controlId="board.title">
+          <Form.Label>제목</Form.Label>
+          <Form.Control type="text"></Form.Control>
+        </Form.Group>
+        <Form.Group controlId="board.content">
+          <Form.Label>내용</Form.Label>
+          <Form.Control as="textarea" rows={3} />
+        </Form.Group>
+        <Button variant="secondary">수정</Button>{' '}
+      </BoardModifyContainer>
+    </CustomCard>
   )
 }
 

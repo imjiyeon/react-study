@@ -1,16 +1,23 @@
 import React from 'react'
-import { Container, Inner } from '../components/Style';
+import styled from 'styled-components';
+import { CustomCard } from '../components/CustomCard';
 
-// 페이지를 만들기 위해 컴포넌트 3개 생성
+const HomeContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
 
-const Home = () => {
+const Home = () => { 
   return (
-        <Container>
-          <Inner>
-            Home
-          </Inner>
-        </Container>
-  )
+    <CustomCard>
+      <HomeContainer>
+        Home
+      </HomeContainer>
+    </CustomCard>
+  );
 }
 
 export default Home
