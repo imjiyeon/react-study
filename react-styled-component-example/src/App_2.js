@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import styled from 'styled-components';
 
@@ -27,11 +26,11 @@ const ReactLargeButton = styled(ReactButton)`
 // 컴포넌트에서 전달받은 prop에 따라 색상 설정하기
 // ${} 안에 함수를 정의하면, 함수가 반환하는 값이 color로 설정됨
 const PrimaryButton = styled.button`
-  color: ${function(props){
+  color: ${function (props) {
     console.log('props', props);
-    if(props.primary){
+    if (props.primary) {
       return 'white';
-    }else{
+    } else {
       return 'black';
     }
   }}

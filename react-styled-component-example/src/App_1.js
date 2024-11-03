@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 // npm으로 스타일드 컴포넌트 설치: npm install styled-components
 // styled-components 패키지에서 styled 함수 가져오기

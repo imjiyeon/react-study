@@ -10,6 +10,10 @@ const LargeButton = styled(SimpleButton)`
   font-size: 50px;
 `;
 
+// const ReactButton = (props) => {
+//   return <button>{props.children}</button>
+// }
+
 const ReactButton = (props) => {
   console.log(props);
   return <button className={props.className} >{props.children}</button>

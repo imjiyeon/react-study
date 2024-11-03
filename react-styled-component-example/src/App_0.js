@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 // 스타일드 컴포넌트를 사용하지 않은 코드
