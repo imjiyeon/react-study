@@ -1,7 +1,6 @@
 /* 레이아웃에서 사용할 헤더 */
 
 import { useNavigate } from "react-router-dom";
-import { selectMember } from "../store/memberSlice";
 import {useSelector, useDispatch} from 'react-redux';
 import { logoutSuccess } from "../store/memberSlice";
 
@@ -14,7 +13,7 @@ function Header() {
     const navigate = useNavigate();
 
     // 리덕스에서 제공하는 훅으로, 스토어에서 상태 가져오기
-    const member = useSelector(selectMember);
+    const member = useSelector((state) => state.member.member);
 
     return (
     <div>
