@@ -24,7 +24,7 @@ const Register = () => {
             <Form.Check value="ROLE_USER" type="radio" name="role" id="role1" label="사용자" onChange="" checked/>
             <Form.Check value="ROLE_ADMIN" type="radio" name="role" id="role2" label="관리자" onChange=""/>
             </Form.Group>
-            <Button variant="secondary">로그인</Button>
+            <Button variant="secondary" type='submit'>로그인</Button>
           </form>
         </CustomContainer>
     </CustomCard>

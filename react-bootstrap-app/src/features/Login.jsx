@@ -18,7 +18,7 @@ const Login = () => {
           <Form.Label>패스워드</Form.Label>
           <Form.Control type="password" name="password"></Form.Control>
         </Form.Group>
-        <Button variant="secondary">로그인</Button>
+        <Button variant="secondary" type='submit'>로그인</Button>
         </form>
       </CustomContainer>
     </CustomCard>

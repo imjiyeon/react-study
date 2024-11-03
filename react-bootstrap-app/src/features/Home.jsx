@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <CustomCard>
       <CustomContainer>
-        Home
+        <h3>Home</h3>
       </CustomContainer>
     </CustomCard>
   );

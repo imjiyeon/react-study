@@ -1,5 +1,4 @@
 // rafce => 자동완성
-import styled from "styled-components";
 import { CustomCard, CustomContainer } from '../components/Styles';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
@@ -9,7 +8,7 @@ function BoardDetail() {
 
   const navigate = new useNavigate();
   
-  let board = {no:1, title:'1번', content:'1번입니다', writer:'둘리'}
+  let board = {no:1, title:'1번', content:'1번입니다', writer:'둘리', regDate:'', modDate:''}
 
   return (
         <CustomCard>
@@ -29,6 +28,14 @@ function BoardDetail() {
                     <Form.Group controlId="board.content">
                       <Form.Label>작성자</Form.Label>
                       <Form.Control type="text" value={board.writer} disabled readOnly></Form.Control>
+                    </Form.Group>
+                    <Form.Group controlId="board.content">
+                      <Form.Label>등록일</Form.Label>
+                      <Form.Control type="text" value={board.regDate} disabled readOnly></Form.Control>
+                    </Form.Group>
+                    <Form.Group controlId="board.content">
+                      <Form.Label>수정일</Form.Label>
+                      <Form.Control type="text" value={board.modDate} disabled readOnly></Form.Control>
                     </Form.Group>
                     <Button variant="primary" onClick={()=>{
                         navigate(`/board/modify/ + ${board.no}`);

@@ -11,6 +11,10 @@ import Login from './features/Login';
 
 // npm install react-router-dom
 
+// 레이아웃 설정하기.
+// Outlet을 사용하는 컴포넌트를 부모 경로에 넣고 
+// 그 아래 자식 라우트를 설정한다
+// 하위 경로를 호출하면 하위 컴포넌트가 부모 컴포넌트의 Outlet 위치에 렌더링된다
 function App() {
   return (
     <>
