@@ -15,3 +15,13 @@ export const CustomCard = styled.div`
   border: none;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 `;
+
+export const CustomContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+

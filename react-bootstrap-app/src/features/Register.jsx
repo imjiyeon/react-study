@@ -1,19 +1,12 @@
 import styled from 'styled-components';
 import { Form, Button } from 'react-bootstrap';
-import { CustomCard } from '../components/CustomCard';
+import { CustomCard, CustomContainer } from '../components/Styles';
 
-const RegisterContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
 
 const Register = () => {
   return (
     <CustomCard>
-        <RegisterContainer>
+        <CustomContainer>
             <h3>회원가입</h3>
             <Form.Group controlId="member.id">
             <Form.Label>아이디</Form.Label>
@@ -24,7 +17,7 @@ const Register = () => {
             <Form.Control type="password"></Form.Control>
             </Form.Group>
             <Button variant="secondary">로그인</Button>{' '}
-        </RegisterContainer>
+        </CustomContainer>
     </CustomCard>
   )
 }

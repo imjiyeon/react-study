@@ -1,20 +1,13 @@
 import styled from 'styled-components';
 import { Form, Button } from 'react-bootstrap';
-import { CustomCard } from '../components/CustomCard';
+import { CustomCard, CustomContainer } from '../components/Styles';
 
-const LoginContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
 
 const Login = () => {
 
   return (
     <CustomCard>
-      <LoginContainer>
+      <CustomContainer>
         <h3>로그인</h3>
         <Form.Group controlId="board.title">
           <Form.Label>아이디</Form.Label>
@@ -25,7 +18,7 @@ const Login = () => {
           <Form.Control type="password"></Form.Control>
         </Form.Group>
         <Button variant="secondary">로그인</Button>
-      </LoginContainer>
+      </CustomContainer>
     </CustomCard>
   );
 }

@@ -1,16 +1,9 @@
 // rafce => 자동완성
 import styled from "styled-components";
-import { CustomCard } from '../components/CustomCard';
+import { CustomCard, CustomContainer } from '../components/Styles';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 
-const BoardDetailContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
 
 function BoardDetail() {
 
@@ -20,7 +13,7 @@ function BoardDetail() {
 
   return (
         <CustomCard>
-            <BoardDetailContainer>
+            <CustomContainer>
                 <h3>게시물 상세</h3>
                 {
                   board !==null &&
@@ -42,7 +35,7 @@ function BoardDetail() {
                     }}>게시물 수정</Button>
                   </>
                 }
-            </BoardDetailContainer>
+            </CustomContainer>
         </CustomCard>
     );
   };

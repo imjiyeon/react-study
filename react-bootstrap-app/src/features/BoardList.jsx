@@ -2,16 +2,8 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 import { Button, Table } from 'react-bootstrap';
-import { CustomCard } from '../components/CustomCard';
+import { CustomCard, CustomContainer } from '../components/Styles';
 import { useNavigate } from "react-router-dom";
-
-const BoardListContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
 
 // 아이템을 비율로 배치
 const Row = styled.div`
@@ -31,7 +23,7 @@ function BoardList(){
 
     return (
         <CustomCard>
-            <BoardListContainer>
+            <CustomContainer>
                 <Row>
                     <h3>게시물 목록</h3>
                     <Button variant="primary" onClick={()=>{
@@ -58,7 +50,7 @@ function BoardList(){
                         }
                     </tbody>
                 </Table>
-            </BoardListContainer>
+            </CustomContainer>
         </CustomCard>
     );
 }
