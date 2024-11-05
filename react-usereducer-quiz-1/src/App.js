@@ -2,11 +2,15 @@ import './App.css';
 import { useState, useReducer } from 'react';
 
 function App() {
+  
+  // state: 숫자, 연산자, 식, 결과 
   const [num1, setNum1] = useState(null);
   const [num2, setNum2] = useState(null);
   const [operator, setOperator] = useState(null);
   const [input, setInput] = useState('');
-  // const [result, setResult] = useState(null); // 결과를 useReducer로 변경
+  // 결과는 - + * 연산자 종류에 따라 
+  // 상태를 변경하는 로직이 다르기 때문에 useReducer로 변경
+  // const [result, setResult] = useState(null); 
 
   const inputNumber = (value) => {
     setInput(input + value);
@@ -23,8 +27,8 @@ function App() {
     setOperator(value);
   };
 
-
-  // 리듀서 함수
+  // 리듀서 함수: 상태 변경 로직
+  // 이전 state값, 액션(명령)
   const resultReducer = (oldResult, action) => {
 
     let tempResult = 0;
@@ -52,8 +56,10 @@ function App() {
     return tempResult;
   };
 
-  // state와 dispatch 함수 생성
-  const [result, resultDispatch] = useReducer(resultReducer, null);
+  // useReducer를 사용하여 state 생성
+  // 현재 state, dispatch함수
+  // dispatch: setState 대신 state를 변경하는 함수
+  const [result, resultDispatch] = useReducer(resultReducer, null); //리듀서와 초기값
 
   const clear = () => {
     setInput('');
@@ -85,10 +91,14 @@ function App() {
           </button>
         ))}
       </div>
-      {/* dispatch 호출 */}
+      
       <button onClick={() => {
+        // set 대신 dispatch 호출
+        // 액션은 연산자로 사용. 두 숫자를 함께 전달
+        // dispatch -> reducer
         resultDispatch({ type: operator, num1: num1, num2: num2 });
       }}>=</button>
+
       <button onClick={clear}>C</button>
     </div>
   );
