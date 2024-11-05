@@ -1,5 +1,9 @@
+body {
+  padding: 20px;
+}
+
 /* div에 테두리 설정 */
-#container, #container div {
+#container, #container > div div {
   border: 5px solid red;
   margin: 10px;
 }
