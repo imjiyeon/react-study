@@ -14,7 +14,7 @@ export function Counter() {
   return (
       <div>
         <button onClick={() => {
-        // dispatch에서 타입을 수정 (슬라이스 이름과 액션을 함께 지정)
+        // dispatch에서 type 변경 (슬라이스 이름/액션)
         dispatch({ type: 'counterSlice/up', step: 2 });
         }} >+</button>
         {count}
