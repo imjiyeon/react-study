@@ -6,6 +6,9 @@ import { useDispatch } from 'react-redux';
 // Right3에 있는 버튼을 클릭하면 Left3에 있는 num이 변경되도록 구현하기!
 
 export const Right1 = () => {
+
+  console.log('Right1...');
+
   return (
     <div>
       <h1>Right1</h1>
@@ -15,6 +18,9 @@ export const Right1 = () => {
 }
 
 const Right2 = () => {
+
+  console.log('Right2...');
+
   return (
     <div>
       <h1>Right2</h1>
@@ -26,6 +32,8 @@ const Right2 = () => {
 // +버튼을 클릭하면 num(state)가 변경되고, 
 // state를 사용하는 Left3 컴포넌트도 다시 렌더링됨
 const Right3 = () => {
+
+  console.log('Right3...');
 
   // redux 스토어에서 dispatch 함수 가져오기
   const dispatch = useDispatch();
