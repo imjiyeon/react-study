@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { Counter } from './component/Counter1';
 
-// store를 별도의 파일로 분리하기
+// slice와 store를 별도의 파일로 분리하기
 
 function App() {
   return (
