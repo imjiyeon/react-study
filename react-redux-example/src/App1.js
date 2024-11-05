@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 // react 패키지에서 useState 훅 가져오기
 import {useState} from 'react';
