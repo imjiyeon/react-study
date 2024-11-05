@@ -10,11 +10,7 @@ const BoardRegister = () => {
   
   const navigate = useNavigate();
 
-  const [board, setBoard] = useState({
-    title: '',
-    content: '',
-    uploadFile: ''
-});
+  const [board, setBoard] = useState({});
 
 // 훅은 일반함수에서 사용할 수 없음
 // 컴포넌트 함수에서만 사용 가능
