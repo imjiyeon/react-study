@@ -6,7 +6,8 @@ const Todo = () => {
 
   const [input, setInput] = useState('');
 
-  const todolist = useSelector((state) => state.todolist);
+  // 스토어의 todo슬라이스의 todolist 꺼내기
+  const todolist = useSelector((state) => state.todo.todolist);
 
   const dispatch = useDispatch();
 
@@ -20,15 +21,15 @@ const Todo = () => {
         placeholder="새 할 일 입력"
       />
       <button onClick={() => {
-        dispatch({ type: 'ADD', text: input });
+        dispatch({ type: 'todoSlice/ADD', text: input });
         setInput('');
       }}>추가</button>
-      <button onClick={() => dispatch({ type: 'RESET' })}>초기화</button>
+      <button onClick={() => dispatch({ type: 'todoSlice/RESET' })}>초기화</button>
       <ul>
         {todolist.map(todo => (
           <li key={todo.id}>
             {todo.text}
-            <button onClick={() => dispatch({ type: 'DELETE', id: todo.id })}>
+            <button onClick={() => dispatch({ type: 'todoSlice/DELETE', id: todo.id })}>
               삭제
             </button>
           </li>

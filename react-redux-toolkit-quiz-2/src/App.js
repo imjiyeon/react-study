@@ -1,40 +1,39 @@
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import Todo from './component/Todo';
+import { createSlice } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
 // npm install redux react-redux
 
-function reducer(oldState, action) {
-
-  let newState = { ...oldState };
-  let list = newState.todolist;
-
-  switch (action.type) {
-    case 'ADD':
+const todoSlice = createSlice({
+  name: 'todoSlice',
+  initialState: { todolist: [] },
+  reducers: {
+    ADD: (state, action) => {
       let newId = 0;
-      if (list.length !== 0) {
-        newId = list[list.length - 1].id + 1;
+      if (state.todolist.length !== 0) {
+        newId = state.todolist.length;
       }
-      list.push({ id: newId, text: action.text });
-      return newState;
-    case 'DELETE':
-      newState.todolist = list.filter(todo => todo.id !== action.id);
-      return newState;
-    case 'RESET':
-      newState.todolist = [];
-      return newState;
-    default:
-      return oldState;
+      state.todolist.push({ id: newId, text: action.text });
+    },
+    DELETE: (state, action) => {
+      state.todolist = state.todolist.filter(todo => todo.id !== action.id);
+    },
+    RESET: (state, action) => {
+      state.todolist = [];
+    }
   }
-
-}
+});
 
 function App() {
 
-  const init = { todolist: [] }
-
-  // 리듀서함수, 초기값
-  const store = createStore(reducer, init);
+  // 슬라이스를 모아서 스토어 생성
+  const store = configureStore({
+    reducer: {
+      todo: todoSlice.reducer
+    }
+  });
 
   return (
     <div>
