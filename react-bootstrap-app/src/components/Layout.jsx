@@ -11,6 +11,11 @@ const LayoutContainer = styled.div`
   align-items: center;
 `;
 
+// Outlet: 중첩 라우트를 설정
+// 부모 컴포넌트에서 자식 컴포넌트의 위치를 지정
+// <Outlet />이 위치한 자리에 자식 라우트가 렌더링됨
+// 예: / => Layout 컴포넌트 렌더링
+// /home => Home 컴포넌트가 <Outlet /> 위치에 표시
 function Layout() {
   return (
     <LayoutContainer>

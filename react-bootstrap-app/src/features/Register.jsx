@@ -1,6 +1,7 @@
 import { Form, Button } from 'react-bootstrap';
 import { CustomCard, CustomContainer } from '../components/Styles';
 
+// API 호출을 위해 각 입력필드에 name 추가
 
 const Register = () => {
   return (

@@ -14,6 +14,14 @@ import Login from './features/Login';
 function App() {
   return (
     <>
+      {/* 중첩 라우트 설정 */}
+      {/* /를 최상위 부모 경로로 설정 */}
+
+      {/* 중첩 라우트는 경로에 따라 부모와 자식 컴포넌트가 함께 렌더링 되는 구조
+          ex: / => Layout 컴포넌트 + Home 컴포넌트
+          ex: /register => Layout 컴포넌트 + Register 컴포넌트
+      */}
+
       <Routes>
         <Route path="/" element={<Layout></Layout>}>
           <Route path='/' element={<Home></Home>}></Route>
