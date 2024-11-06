@@ -1,8 +1,4 @@
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import Todo from './component/Todo';
-
-// npm install redux react-redux
+import { createStore } from "redux";
 
 function reducer(oldState, action) {
 
@@ -29,21 +25,7 @@ function reducer(oldState, action) {
 
 }
 
-function App() {
+const init = { todolist: [] }
 
-  const init = { todolist: [] }
-
-  // 리듀서함수, 초기값
-  const store = createStore(reducer, init);
-
-  return (
-    <div>
-      <h3>To-Do List</h3>
-      <Provider store={store}>
-        <Todo></Todo>
-      </Provider>
-    </div>
-  );
-}
-
-export default App;
+// 리듀서함수, 초기값
+export const store = createStore(reducer, init);

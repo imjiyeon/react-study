@@ -3,6 +3,9 @@ import { createStore } from "redux";
 import Calc from './component/Calc';
 import { Provider } from 'react-redux';
 
+// npm install redux react-redux
+// npm install @reduxjs/toolkit
+
 function reducer(oldState, action) {
 
   let newState = { ...oldState }
