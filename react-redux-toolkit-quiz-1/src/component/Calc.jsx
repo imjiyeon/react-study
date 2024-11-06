@@ -29,14 +29,17 @@ const Calc = () => {
     
       const clear = () => {
         setInput('');
-        dispatch({ type: '0' });
+        dispatch({ type: 'calcSlice/0' });
         setNum1(null);
         setNum2(null);
         setOperator(null);
       };
 
-      const result = useSelector((state)=>state.result);
-  
+      // 스토어의 계산기슬라이스의 result 꺼내기
+      const result = useSelector((state)=>{
+        console.log(state);
+        return state.calc.result
+      });
 
   return (
     <div>
@@ -61,7 +64,7 @@ const Calc = () => {
       </div>
 
       <button onClick={() => {
-        dispatch({ type: operator, num1: num1, num2: num2 });
+        dispatch({ type: "calcSlice/"+operator, num1: num1, num2: num2 });
       }}>=</button>
 
       <button onClick={clear}>C</button>
