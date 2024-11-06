@@ -3,7 +3,11 @@ import { Provider } from 'react-redux';
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { Counter } from './component/Counter';
 
-// 리덕스 툴킷의 액션 크리에이터를 사용하여 리듀서 처리
+// 리덕스 툴킷의 액션 크리에이터로 디스패치 호출하기
+
+// 1. App에서 카운터 슬라이스 내보내기
+// 2. Counter 컴포넌트에서 슬라이스로 디스패치 대신 액션함수 사용하기
+// 3. 슬라이스의 리듀서에서 액션함수에서 전달한 값 처리하기 (payload)
 
 // counterSlice 내보내기
 export const counterSlice = createSlice({

@@ -7,5 +7,4 @@ const store = configureStore({
   }
 });
 
-// store 내보내기
 export default store;

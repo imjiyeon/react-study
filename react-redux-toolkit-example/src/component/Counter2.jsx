@@ -5,7 +5,8 @@ export function Counter() {
   const dispatch = useDispatch();
 
   // counter 슬라이스에서 value값 가져오기
-  // counter는 counterSlice의 초기값
+  // 상위 객체로 counter가 생김
+  // state에서 counter 아래 있는 value를 꺼내야함
   const count = useSelector((state) => {
     console.log(state);
     return state.counter.value
