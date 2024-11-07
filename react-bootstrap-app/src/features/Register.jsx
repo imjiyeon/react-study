@@ -9,23 +9,34 @@ const Register = () => {
         <CustomContainer>
           <form>
             <h3>회원가입</h3>
-            <Form.Group controlId="member.id">
-            <Form.Label>아이디</Form.Label>
-            <Form.Control type="text" name="id"></Form.Control>
+            {/* Form 가져오기 */}
+            {/* Form.Group -> <div> */}
+            {/* controlId -> label과 input의 id 설정됨 -> 라벨을 누르면 입력필드에 포커싱됨 */}
+            <Form.Group className="mb-3" controlId="member.id">  {/* controlId: 다른 필드와 중복안되게 */}
+              {/* Form.Label -> <label> */}
+              {/* Form.Control -> <input> */}
+              <Form.Label>아이디</Form.Label> 
+              <Form.Control type="text" name="id"></Form.Control>
             </Form.Group>
-            <Form.Group controlId="member.password">
-            <Form.Label>비밀번호</Form.Label>
-            <Form.Control type="password" name="password"></Form.Control>
+            <Form.Group className="mb-3" controlId="member.password">
+              <Form.Label>비밀번호</Form.Label>
+              <Form.Control type="password" name="password"></Form.Control>
             </Form.Group>
-            <Form.Group controlId="member.name">
+            <Form.Group className="mb-3" controlId="member.name">
                 <Form.Label>이름</Form.Label>
                 <Form.Control type="text" name="name"></Form.Control>
             </Form.Group>
-            <Form.Group controlId="member.role">
-            <Form.Check value="ROLE_USER" type="radio" name="role" id="role1" label="사용자" onChange="" checked/>
-            <Form.Check value="ROLE_ADMIN" type="radio" name="role" id="role2" label="관리자" onChange=""/>
+            {/* Form - Checks and radios 가져오기 */}
+            <Form.Group className="mb-3">
+              {/* name,value 추가 */}
+              {/* Form.Check -> <lable> + <input> */}
+              <Form.Check type="radio" name="role" id="member.role1" label="사용자" value="ROLE_USER" />
+              <Form.Check type="radio" name="role" id="member.role2" label="관리자" value="ROLE_ADMIN" />
             </Form.Group>
-            <Button variant="secondary" type='submit'>로그인</Button>
+            {/* Components > Buttons 색 변경하기 */}
+            <Button variant="primary" type="submit">
+              등록
+            </Button>
           </form>
         </CustomContainer>
     </CustomCard>
