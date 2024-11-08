@@ -39,6 +39,12 @@ function BoardList(){
                         </tr>
                     </thead>
                     <tbody>
+                        
+            {/* data가 있는지 확인 */}
+            {/* 논리곱 연산자는 첫번째항이 false면 두번째항을 사용하지 않는다 */}
+            {/* 만약 data가 없는데 map함수를 호출하면 nullpoint 에러남 */}
+
+            {/* map함수로 게시물데이터를 <tr> 행으로 생성 */}
                         {
                             data.map((board)=>{
                                 return <tr>
