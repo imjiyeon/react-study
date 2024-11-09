@@ -15,16 +15,8 @@ const IMG_PATH = '/images/';
 
 async function fetchBoardDetail(boardNo, token){
 
-  const response = await axios.get(`http://localhost:8080/board/read?no=${boardNo}`, {
-    headers: {
-      Authorization: token
-    }
-  });
-  if (response.status !== 200) {
-    throw new Error(`api error: ${response.status} ${response.statusText}`);
-  } 
-
-  return response.data;
+ 
+  
 }
 
 function BoardDetail() {
@@ -38,11 +30,19 @@ function BoardDetail() {
   const [board, setBoard] = useState(null);
 
   const apicall = async () => {
-        const response = await fetchBoardDetail(params.no, token);
-        if (response) {
-          setBoard(response);
-        }
+    
+    const response = await axios.get(`http://localhost:8080/board/read?no=${params.no}`, {
+      headers: {
+        Authorization: token
+      }
+    });
+    if (response.status !== 200) {
+      throw new Error(`api error: ${response.status} ${response.statusText}`);
+    } else {
+      setBoard(response.data);
     }
+  
+  }
 
     // 1. useEffect를 사용하면 처음에 화면이 렌더링되고
     // 2. useEffect 안에 있는 apicall이 실행되고

@@ -8,16 +8,7 @@ import { useSelector } from 'react-redux';
 
 async function fetchBoardDetail(boardNo, token){
 
-  const response = await axios.get(`http://localhost:8080/board/read?no=${boardNo}`, {
-    headers: {
-      Authorization: token
-    }
-  });
-  if (response.status !== 200) {
-    throw new Error(`api error: ${response.status} ${response.statusText}`);
-  } 
-
-  return response.data;
+  
 }
 
 const BoardModify = () => {
@@ -31,10 +22,17 @@ const BoardModify = () => {
   const [board, setBoard] = useState(null);
 
   const apicall = async () => {
-        const response = await fetchBoardDetail(params.no, token);
-        if (response) {
-          setBoard(response);
-        }
+    
+    const response = await axios.get(`http://localhost:8080/board/read?no=${params.no}`, {
+      headers: {
+        Authorization: token
+      }
+    });
+    if (response.status !== 200) {
+      throw new Error(`api error: ${response.status} ${response.statusText}`);
+    } else {
+      setBoard(response.data);
+    }
   }
 
     useEffect(()=>{

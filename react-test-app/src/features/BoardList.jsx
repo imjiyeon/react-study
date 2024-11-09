@@ -19,21 +19,6 @@ const Row = styled.div`
 //   {no:3, title:'3번', content:'3번입니다', writer: '도우너'},
 // ];
 
-// api 호출을 위해 비동기 함수 정의
-async function fetchBoardList(token){
-
-    const response = await axios.get('http://localhost:8080/board/list', {
-      headers: {
-        Authorization: token
-      }
-    });
-    if (response.status !== 200) {
-      throw new Error(`api error: ${response.status} ${response.statusText}`);
-    }
-  
-    return response.data;
-}
-
 function BoardList(){
 
     const token = useSelector((state) => state.member.token);
@@ -49,8 +34,17 @@ function BoardList(){
       // fetchBoardList 비동기 함수를 호출하기 위해 await을 써야하는데
       // useEffect 안에서 바로 쓸수가 없어서 비동기함수를 한번더 만들고 사용
       const getData = async () => {
-        const data = await fetchBoardList(token);
-        setList(data); // 데이터를 상태에 저장
+
+        const response = await axios.get('http://localhost:8080/board/list', {
+            headers: {
+              Authorization: token
+            }
+          });
+          if (response.status !== 200) {
+            throw new Error(`api error: ${response.status} ${response.statusText}`);
+          }
+        
+        setList(response.data); // 데이터를 상태에 저장
       };
       getData(); // async 함수 호출
     }, []);
