@@ -14,10 +14,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
-  const [user, userUser] = useState({
-      id: '',
-      password: ''
-  });
+  const [user, setUser] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +24,7 @@ const Login = () => {
       [name]: value
     };
         
-    userUser(newMember);
+    setUser(newMember);
   };
 
   const handleSubmit = async (e) => {
