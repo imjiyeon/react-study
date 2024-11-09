@@ -17,10 +17,8 @@ const Login = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    const newMember = {
-      ...user,
-      [name]: value
-    };
+    const newMember = {...user};
+    newMember[name] = value;
         
     setUser(newMember);
   };
