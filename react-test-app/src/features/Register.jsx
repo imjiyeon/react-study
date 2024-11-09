@@ -8,12 +8,7 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const [member, setMember] = useState({
-    id: '',
-    password: '',
-    name: '',
-    role: 'ROLE_USER'
-  });
+  const [member, setMember] = useState({});
 
   function handleChange(e){
     const { name, value } = e.target;
@@ -62,9 +57,9 @@ const Register = () => {
               </Form.Group>
               <Form.Group controlId="member.role">
                 <Form.Check value="ROLE_USER" type="radio" name="role" id="role1" label="사용자"
-                  onChange={handleChange} checked/>
+                  onChange={handleChange} />
                 <Form.Check value="ROLE_ADMIN" type="radio" name="role" id="role2" label="관리자"
-                  onChange={handleChange}/>
+                  onChange={handleChange} />
               </Form.Group>
               <Button variant="secondary" type="submit">등록</Button>
             </form>
