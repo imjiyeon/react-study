@@ -13,10 +13,9 @@ const Register = () => {
   function handleChange(e){
     const { name, value } = e.target;
 
-    const newMember = {
-      ...member,
-      [name]: value
-    };
+    const newMember = {...member};
+
+    newMember[name] = value;
         
     setMember(newMember);
   }

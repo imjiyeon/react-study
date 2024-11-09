@@ -43,10 +43,11 @@ const BoardModify = () => {
     // 값이 입력될 때마다 이벤트 함수를 호출하여 state를 변경한다
     const handleChange = (e) => {
       const {name, value} = e.target;
-      const newBoard = {
-        ...board,
-        [name]: value
-      }
+
+      const newBoard = {...board}
+
+      newBoard[name] = value;
+
       setBoard(newBoard);
     }
 
