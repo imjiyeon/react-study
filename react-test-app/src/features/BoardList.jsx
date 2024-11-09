@@ -6,6 +6,7 @@ import { CustomCard, CustomContainer } from '../components/Styles';
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Row = styled.div`
   display: grid;
@@ -19,11 +20,11 @@ const Row = styled.div`
 // ];
 
 // api 호출을 위해 비동기 함수 정의
-async function fetchBoardList(){
+async function fetchBoardList(token){
 
     const response = await axios.get('http://localhost:8080/board/list', {
       headers: {
-        Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mjk5MzExMTEsImV4cCI6MTczMjUyMzExMSwic3ViIjoidXNlciJ9.EHky-YCdi307UYFCYUdmRxqPOQEnyNn8D4sYoHqiKD8',
+        Authorization: token
       }
     });
     if (response.status !== 200) {
@@ -34,6 +35,8 @@ async function fetchBoardList(){
 }
 
 function BoardList(){
+
+    const token = useSelector((state) => state.member.token);
 
     const navigate = useNavigate();
 
@@ -46,7 +49,7 @@ function BoardList(){
       // fetchBoardList 비동기 함수를 호출하기 위해 await을 써야하는데
       // useEffect 안에서 바로 쓸수가 없어서 비동기함수를 한번더 만들고 사용
       const getData = async () => {
-        const data = await fetchBoardList();
+        const data = await fetchBoardList(token);
         setList(data); // 데이터를 상태에 저장
       };
       getData(); // async 함수 호출

@@ -4,12 +4,13 @@ import { CustomCard, CustomContainer } from '../components/Styles';
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from 'react-redux';
 
-async function fetchBoardDetail(boardNo){
+async function fetchBoardDetail(boardNo, token){
 
   const response = await axios.get(`http://localhost:8080/board/read?no=${boardNo}`, {
     headers: {
-      Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mjk5MzExMTEsImV4cCI6MTczMjUyMzExMSwic3ViIjoidXNlciJ9.EHky-YCdi307UYFCYUdmRxqPOQEnyNn8D4sYoHqiKD8',
+      Authorization: token
     }
   });
   if (response.status !== 200) {
@@ -21,6 +22,8 @@ async function fetchBoardDetail(boardNo){
 
 const BoardModify = () => {
 
+  const token = useSelector((state) => state.member.token);
+
   const params = useParams();
 
   const navigate = useNavigate();
@@ -28,7 +31,7 @@ const BoardModify = () => {
   const [board, setBoard] = useState(null);
 
   const apicall = async () => {
-        const response = await fetchBoardDetail(params.no);
+        const response = await fetchBoardDetail(params.no, token);
         if (response) {
           setBoard(response);
         }

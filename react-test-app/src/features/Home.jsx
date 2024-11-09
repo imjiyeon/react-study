@@ -5,14 +5,14 @@ import { useSelector } from 'react-redux';
 
 const Home = () => { 
 
-  const member = useSelector((state) => state.member.member);
+  const memberInfo = useSelector((state) => state.member.info);
 
   return (
     <CustomCard>
       <CustomContainer>
         <h3>Home</h3>
         {
-          member!==null && `안녕하세요. ${member.name} 님`
+          memberInfo!==null && `안녕하세요. ${memberInfo.name} 님`
         }
       </CustomContainer>
     </CustomCard>

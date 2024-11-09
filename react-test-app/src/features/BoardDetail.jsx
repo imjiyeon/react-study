@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { CustomCard, CustomContainer } from '../components/Styles';
 import { Form, Button } from 'react-bootstrap';
 
@@ -6,17 +5,19 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
+import { useSelector } from 'react-redux';
+
 // 브라우저 보안 정책으로 인해 외부에 있는 파일(c:\\uploadfile)을 가지고 올 수 없음
 // S3를 사용하기 전에, 임시로 업로드 파일을 React 프로젝트 안에 저장할 것
 
 // public 아래 images 폴더
 const IMG_PATH = '/images/';
 
-async function fetchBoardDetail(boardNo){
+async function fetchBoardDetail(boardNo, token){
 
   const response = await axios.get(`http://localhost:8080/board/read?no=${boardNo}`, {
     headers: {
-      Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mjk5MzExMTEsImV4cCI6MTczMjUyMzExMSwic3ViIjoidXNlciJ9.EHky-YCdi307UYFCYUdmRxqPOQEnyNn8D4sYoHqiKD8',
+      Authorization: token
     }
   });
   if (response.status !== 200) {
@@ -28,6 +29,8 @@ async function fetchBoardDetail(boardNo){
 
 function BoardDetail() {
 
+  const token = useSelector((state) => state.member.token);
+
   const navigate = new useNavigate();
 
   const params = useParams();
@@ -35,7 +38,7 @@ function BoardDetail() {
   const [board, setBoard] = useState(null);
 
   const apicall = async () => {
-        const response = await fetchBoardDetail(params.no);
+        const response = await fetchBoardDetail(params.no, token);
         if (response) {
           setBoard(response);
         }

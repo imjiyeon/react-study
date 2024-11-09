@@ -35,12 +35,8 @@ const Login = () => {
     );
 
     if (response.status === 200) {
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-      
       // 리듀서 호출
-      dispatch(login(response.data.user));
-
+      dispatch(login(response.data));
       navigate('/');
     } else {
       throw new Error(`api error: ${response.status} ${response.statusText}`);

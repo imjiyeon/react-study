@@ -4,9 +4,12 @@ import { CustomCard,CustomContainer } from '../components/Styles';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from 'react-redux';
 
 
 const BoardRegister = () => {
+  
+  const token = useSelector((state) => state.member.token);
   
   const navigate = useNavigate();
 
@@ -60,7 +63,7 @@ const handleSubmit = async (e) => {
     // formData,
     {
       headers: {
-      Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mjk5OTc4MTcsImV4cCI6MTczMjU4OTgxNywic3ViIjoidXNlciJ9.HqR1aDDicHD2cE-0KAFiFRBCbZvXxcqVxb4XdsOmFKk',
+      Authorization: token
     }
   });
 

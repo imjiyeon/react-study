@@ -24,7 +24,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   // 리덕스에서 제공하는 훅으로, 스토어에서 상태 가져오기
-  const member = useSelector((state) => state.member.member);
+  const memberInfo = useSelector((state) => state.member.info);
 
   return (
     <HeaderContainer>
@@ -35,7 +35,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
             {
-              member === null ? 
+              memberInfo === null ? 
               <>
                 <Nav.Link href="/register">회원가입</Nav.Link>
                 <Nav.Link href="/login">로그인</Nav.Link>
@@ -50,11 +50,11 @@ const Header = () => {
               </> 
             }
             {
-              member !== null && member.role === 'ROLE_USER' && 
+              memberInfo !== null && memberInfo.role === 'ROLE_USER' && 
               <Nav.Link href="/board/list">게시물관리</Nav.Link>
             }
             {
-              member !== null && member.role === 'ROLE_ADMIN' &&
+              memberInfo !== null && memberInfo.role === 'ROLE_ADMIN' &&
               <>
               <Nav.Link href="/board/list">게시물관리</Nav.Link>
               <Nav.Link href="/board/list">회원관리</Nav.Link>
