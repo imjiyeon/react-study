@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { Form, Button } from 'react-bootstrap';
 import { CustomCard, CustomContainer } from '../components/Styles';
 

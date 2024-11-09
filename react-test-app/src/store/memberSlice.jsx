@@ -4,12 +4,12 @@ const initialState = {
   member: null,
 };
 
-const memberSlice = createSlice({
-  name: "member",
+export const memberSlice = createSlice({
+  name: "memberSlice",
   initialState,
   reducers: {
-    loginSuccess: (state, { payload: member }) => {
-      state.member = member;
+    loginSuccess: (state, action) => {
+      state.member = action.payload;
     },
     logoutSuccess: (state) => {
       state.member = null;
@@ -19,6 +19,5 @@ const memberSlice = createSlice({
   },
 });
 
+// 액션함수
 export const { loginSuccess, logoutSuccess } = memberSlice.actions;
-
-export default memberSlice.reducer;
