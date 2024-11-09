@@ -8,10 +8,10 @@ export const memberSlice = createSlice({
   name: "memberSlice",
   initialState,
   reducers: {
-    loginSuccess: (state, action) => {
+    login: (state, action) => {
       state.member = action.payload;
     },
-    logoutSuccess: (state) => {
+    logout: (state) => {
       state.member = null;
       localStorage.removeItem('token');
       localStorage.removeItem('user');
@@ -20,4 +20,4 @@ export const memberSlice = createSlice({
 });
 
 // 액션함수
-export const { loginSuccess, logoutSuccess } = memberSlice.actions;
+export const { login, logout } = memberSlice.actions;

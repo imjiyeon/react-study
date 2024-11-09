@@ -1,11 +1,10 @@
 import { Form, Button } from 'react-bootstrap';
 import { CustomCard, CustomContainer } from '../components/Styles';
-
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginSuccess } from "../store/memberSlice";
+import { login } from "../store/memberSlice";
 
 const Login = () => {
   
@@ -40,7 +39,7 @@ const Login = () => {
       localStorage.setItem('user', JSON.stringify(response.data.user));
       
       // 리듀서 호출
-      dispatch(loginSuccess(response.data.user));
+      dispatch(login(response.data.user));
 
       navigate('/');
     } else {

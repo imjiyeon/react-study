@@ -2,13 +2,10 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import styled from 'styled-components';
-//
 import { useNavigate } from "react-router-dom";
-import { selectMember } from "../store/memberSlice";
 import {useSelector, useDispatch} from 'react-redux';
-import { logoutSuccess } from "../store/memberSlice";
+import { logout } from "../store/memberSlice";
 
 const HeaderContainer = styled.div`
   width: 100%;
@@ -46,7 +43,7 @@ const Header = () => {
               :
               <>
               <Nav.Link onClick={()=>{ 
-                  dispatch(logoutSuccess());
+                  dispatch(logout());
                   navigate('/');
               }}>로그아웃</Nav.Link>
               <Nav.Link href="/">홈</Nav.Link>
