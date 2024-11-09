@@ -11,13 +11,8 @@ import { useSelector } from 'react-redux';
 // S3를 사용하기 전에, 임시로 업로드 파일을 React 프로젝트 안에 저장할 것
 
 // public 아래 images 폴더
-const IMG_PATH = '/images/';
-
-async function fetchBoardDetail(boardNo, token){
-
- 
-  
-}
+const IMG_PATH = 'C://uploadfile/';
+// const IMG_PATH = '/images/';
 
 function BoardDetail() {
 
@@ -81,7 +76,9 @@ function BoardDetail() {
                       <Form.Label>수정일</Form.Label>
                       <Form.Control type="text" value={board.modDate} disabled readOnly></Form.Control>
                     </Form.Group>
+                    {/* 이미지 */}
                     {/* <img src={`${IMG_PATH}${board.imgPath}`}></img> */}
+                    
                     <Button variant="primary" onClick={()=>{
                         navigate(`/board/modify/${params.no}`);
                     }}>게시물 수정</Button>
