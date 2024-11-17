@@ -21,23 +21,24 @@ const BoardModify = () => {
 
   const [board, setBoard] = useState(null);
 
-  const apicall = async () => {
+  useEffect(()=>{
     
-    const response = await axios.get(`http://localhost:8080/board/read?no=${params.no}`, {
-      headers: {
-        Authorization: token
+    // 함수 정의
+    const apicall = async () => {
+      const response = await axios.get(`http://localhost:8080/board/read?no=${params.no}`, {
+          headers: {
+            Authorization: token
+          }
+        });
+        if (response.status !== 200) {
+          throw new Error(`api error: ${response.status} ${response.statusText}`);
+        } else {
+          setBoard(response.data);
+        }
       }
-    });
-    if (response.status !== 200) {
-      throw new Error(`api error: ${response.status} ${response.statusText}`);
-    } else {
-      setBoard(response.data);
-    }
-  }
-
-    useEffect(()=>{
-        apicall();
-    }, []);
+      // 함수 호출
+      apicall();
+  }, []);
 
     // 입력필드에 값을 변경해도 값이 바뀌지 않는다
     // 필드에 연결된 state가 바뀌지 않았기 때문이다

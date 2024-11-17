@@ -24,21 +24,6 @@ function BoardDetail() {
 
   const [board, setBoard] = useState(null);
 
-  const apicall = async () => {
-    
-    const response = await axios.get(`http://localhost:8080/board/read?no=${params.no}`, {
-      headers: {
-        Authorization: token
-      }
-    });
-    if (response.status !== 200) {
-      throw new Error(`api error: ${response.status} ${response.statusText}`);
-    } else {
-      setBoard(response.data);
-    }
-  
-  }
-
     // 1. useEffect를 사용하면 처음에 화면이 렌더링되고
     // 2. useEffect 안에 있는 apicall이 실행되고
     // 3. setState로 화면이 다시 렌더링 되면서 board 데이터가 출력됨
@@ -46,7 +31,23 @@ function BoardDetail() {
     // 두번째로 렌더링 될때: 화면에 데이터 있음
 
     useEffect(()=>{
-        apicall();
+
+      // 함수 정의
+      const apicall = async () => {
+        const response = await axios.get(`http://localhost:8080/board/read?no=${params.no}`, {
+          headers: {
+            Authorization: token
+          }
+        });
+        if (response.status !== 200) {
+          throw new Error(`api error: ${response.status} ${response.statusText}`);
+        } else {
+          setBoard(response.data);
+        }
+      
+      }
+      // 함수 호출
+      apicall();
     }, []); //빈배열을 넣어서 처음 렌더링 때만 호출
 
   return (

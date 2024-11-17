@@ -33,8 +33,9 @@ function BoardList(){
     useEffect(() => {
       // fetchBoardList 비동기 함수를 호출하기 위해 await을 써야하는데
       // useEffect 안에서 바로 쓸수가 없어서 비동기함수를 한번더 만들고 사용
-      const getData = async () => {
 
+      // 함수정의
+      const apicall = async () => {
         const response = await axios.get('http://localhost:8080/board/list', {
             headers: {
               Authorization: token
@@ -46,7 +47,8 @@ function BoardList(){
         
         setList(response.data); // 데이터를 상태에 저장
       };
-      getData(); // async 함수 호출
+      // 함수호출
+      apicall(); 
     }, []);
 
     return (
