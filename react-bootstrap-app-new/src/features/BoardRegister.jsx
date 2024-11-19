@@ -5,12 +5,6 @@ import Form from 'react-bootstrap/Form';
 
 const BoardRegister = () => {
 
-  // 게시물 정보
-  // 번호, 제목, 내용, 작성자, 등록일, 수정일
-  // 번호 => auto increament에 의해 자동으로 생성됨
-  // 작성자 => 로그인 후 시큐리티에 의해 자동으로 생성됨
-  // 등록일, 수정일 => jpa에 의해 현재시간으로 자동으로 저장됨
-
   return (
     <CustomCard>
       <CustomContainer>
