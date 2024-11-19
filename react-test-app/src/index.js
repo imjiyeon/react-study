@@ -8,6 +8,22 @@ import { Provider } from 'react-redux';
 import { login } from './store/memberSlice';
 import store from './store/store';
 
+import { createContext } from 'react';
+
+// createContext: 여러 컴포넌트에서 값을 공유할 때 사용
+// 스토어, 슬라이스: 여러 컴포넌트에서 state를 공유할 때 사용
+
+// context 생성하고 export
+export const Context = createContext();
+
+// API 주소
+let host = 'http://localhost:8080';
+// let host;
+// if (window.location.hostname === "localhost") {
+//   host = 'http://localhost:8080';
+// } else {
+//   host = '/api';
+// }
 
 // 로그인 정보 유지하기
 // 브라우저를 다시 열었을 때 로컬 스토리지에 인증정보가 있는지 확인
@@ -24,8 +40,11 @@ if (userStr !== null) {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    {/* 컨텍스트를 통해 하위 컴포넌트들에게 host 데이터를 공유 */}
+    <Context.Provider value={{ host }}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Context.Provider>
   </BrowserRouter>
 );

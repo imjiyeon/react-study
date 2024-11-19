@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../store/memberSlice";
 
+import { Context } from '../index';
+import { useContext } from 'react';
+
 const Login = () => {
   
   const navigate = useNavigate();
@@ -13,6 +16,9 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const [user, setUser] = useState({});
+
+  // 컨텍스트에서 host 데이터 가져오기
+  const { host } = useContext(Context);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +34,8 @@ const Login = () => {
     e.preventDefault();
 
     const response = await axios.post(
-      'http://localhost:8080/login',
+      // 'http://localhost:8080/login',
+      `${host}/login`,
       user
     );
 

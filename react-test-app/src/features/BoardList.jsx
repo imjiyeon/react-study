@@ -8,6 +8,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import { Context } from '../index';
+import { useContext } from 'react';
+
 const Row = styled.div`
   display: grid;
   grid-template-columns: 5fr 1fr;
@@ -26,6 +29,9 @@ function BoardList(){
     const navigate = useNavigate();
 
     const [list, setList] = useState([]);
+
+    // 컨텍스트에서 host 데이터 가져오기
+    const { host } = useContext(Context);
     
     // 상태만 변경하려면 useState를 사용하면됨
     // 하지만 컴포넌트가 렌더링될때 데이터 로드가 필요한 경우에는 useEffect를 함께써야함
@@ -36,7 +42,9 @@ function BoardList(){
 
       // 함수정의
       const apicall = async () => {
-        const response = await axios.get('http://localhost:8080/board/list', {
+        // const response = await axios.get('http://localhost:8080/board/list', {
+        // const response = await axios.get('http://3.35.231.182:8080/board/list', {
+        const response = await axios.get(`${host}/board/list`, {
             headers: {
               Authorization: token
             }

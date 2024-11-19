@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from 'react-redux';
 
+import { Context } from '../index';
+import { useContext } from 'react';
+
 
 const BoardRegister = () => {
   
@@ -17,6 +20,9 @@ const BoardRegister = () => {
 
 // 훅은 일반함수에서 사용할 수 없음
 // 컴포넌트 함수에서만 사용 가능
+
+// 컨텍스트에서 host 데이터 가져오기
+const { host } = useContext(Context);
 
 const handleChange = (e) => {
   // event.target 객체에서 key값으로 name, value 꺼내기
@@ -58,7 +64,8 @@ const handleSubmit = async (e) => {
   // formData.append("uploadFile", board.uploadFile);
 
   const response = await axios.post(
-    'http://localhost:8080/board/register',
+    // 'http://localhost:8080/board/register',
+    `${host}/board/register`,
     board,
     // formData,
     {

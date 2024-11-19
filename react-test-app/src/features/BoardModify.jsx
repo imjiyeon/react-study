@@ -6,10 +6,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from 'react-redux';
 
-async function fetchBoardDetail(boardNo, token){
+import { Context } from '../index';
+import { useContext } from 'react';
 
-  
-}
 
 const BoardModify = () => {
 
@@ -21,11 +20,16 @@ const BoardModify = () => {
 
   const [board, setBoard] = useState(null);
 
+  // 컨텍스트에서 host 데이터 가져오기
+  const { host } = useContext(Context);
+
   useEffect(()=>{
     
     // 함수 정의
     const apicall = async () => {
-      const response = await axios.get(`http://localhost:8080/board/read?no=${params.no}`, {
+      // const response = await axios.get(`http://localhost:8080/board/read?no=${params.no}`, {
+      // const response = await axios.get(`http://3.35.231.182:8080/board/read?no=${params.no}`, {
+      const response = await axios.get(`${host}/board/read?no=${params.no}`, {
           headers: {
             Authorization: token
           }
@@ -57,11 +61,11 @@ const BoardModify = () => {
       e.preventDefault();
   
       const response = await axios.put(
-        'http://localhost:8080/board/modify',
+        `${host}/board/modify`,
         board,
         {
           headers: {
-          Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mjk5OTc4MTcsImV4cCI6MTczMjU4OTgxNywic3ViIjoidXNlciJ9.HqR1aDDicHD2cE-0KAFiFRBCbZvXxcqVxb4XdsOmFKk',
+            Authorization: token
         }
       });
   
@@ -77,10 +81,10 @@ const BoardModify = () => {
       const no = board.no;
 
       const response = await axios.delete(
-        `http://localhost:8080/board/remove?no=${no}`,
+        `${host}/board/remove?no=${no}`,
         {
           headers: {
-          Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mjk5OTc4MTcsImV4cCI6MTczMjU4OTgxNywic3ViIjoidXNlciJ9.HqR1aDDicHD2cE-0KAFiFRBCbZvXxcqVxb4XdsOmFKk',
+            Authorization: token
         }
       });
   

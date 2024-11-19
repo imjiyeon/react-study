@@ -4,11 +4,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import { Context } from '../index';
+import { useContext } from 'react';
+
 const Register = () => {
 
   const navigate = useNavigate();
 
   const [member, setMember] = useState({});
+
+  // 컨텍스트에서 host 데이터 가져오기
+  const { host } = useContext(Context);
 
   function handleChange(e){
     const { name, value } = e.target;
@@ -25,9 +31,14 @@ const Register = () => {
     e.preventDefault();
 
     const response = await axios.post(
-      'http://localhost:8080/register',
+      `${host}/register`,
       member
     );
+
+    // const response = await axios.post(
+    //   'http://3.35.231.182:8080/register',
+    //   member
+    // );
 
     if (response.status !== 201) {
       throw new Error(`api error: ${response.status} ${response.statusText}`);
