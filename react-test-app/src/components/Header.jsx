@@ -46,6 +46,7 @@ const Header = () => {
                 <Nav.Link href="/login">로그인</Nav.Link>
               </> 
               :
+              // 디스패치를 사용하여 logout 액션함수를 호출
               <>
               <Nav.Link onClick={()=>{ 
                   dispatch(logout());
