@@ -5,8 +5,8 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { login } from './store/memberSlice';
 import store from './store/store';
+import { login } from './store/memberSlice';
 
 import { createContext } from 'react';
 

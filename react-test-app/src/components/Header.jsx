@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { logout } from "../store/memberSlice";
 
 const HeaderContainer = styled.div`
@@ -23,8 +23,12 @@ const Header = () => {
   // 페이지 이동시 사용하는 함수
   const navigate = useNavigate();
 
-  // 리덕스에서 제공하는 훅으로, 스토어에서 상태 가져오기
-  const memberInfo = useSelector((state) => state.member.info);
+  // 스토어에서 상태값 가져오기
+  // member 슬라이스의 사용자 정보 info를 선택
+  const memberInfo = useSelector((state) => {
+    console.log(state); // root 아래 member가 있음
+    return state.member.info
+  });
 
   return (
     <HeaderContainer>
@@ -34,6 +38,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
+            {/* 삼항 연산자를 사용하여 회원 정보 여부에 따라 메뉴 표시 */}
             {
               memberInfo === null ? 
               <>

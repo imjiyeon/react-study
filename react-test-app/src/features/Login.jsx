@@ -1,10 +1,11 @@
 import { Form, Button } from 'react-bootstrap';
 import { CustomCard, CustomContainer } from '../components/Styles';
+
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../store/memberSlice";
+import axios from "axios";
 
 import { Context } from '../index';
 import { useContext } from 'react';
@@ -34,13 +35,14 @@ const Login = () => {
     e.preventDefault();
 
     const response = await axios.post(
-      // 'http://localhost:8080/login',
       `${host}/login`,
       user
     );
 
+    // 로그인에 성공했으면, 응답받은 토큰과 회원정보를 state에 업데이트
+    // 메인화면으로 이동
     if (response.status === 200) {
-      // 리듀서 호출
+      // 디스패치를 사용하여 login 액션함수를 호출 => 리듀서 실행
       dispatch(login(response.data));
       navigate('/');
     } else {
