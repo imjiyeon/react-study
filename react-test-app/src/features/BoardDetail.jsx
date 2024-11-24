@@ -87,6 +87,7 @@ function BoardDetail() {
                     </Form.Group>
                     {/* 이미지 */}
                     {/* <img src={`${IMG_PATH}${board.imgPath}`}></img> */}
+                    <img src={board.imgPath}></img>
                     
                     <Button variant="primary" onClick={()=>{
                         navigate(`/board/modify/${params.no}`);
