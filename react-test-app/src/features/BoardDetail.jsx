@@ -47,10 +47,10 @@ function BoardDetail() {
             Authorization: token
           }
         });
-        if (response.status !== 200) {
-          throw new Error(`api error: ${response.status} ${response.statusText}`);
-        } else {
+        if (response.status === 200) {
           setBoard(response.data);
+        } else {
+          throw new Error(`api error: ${response.status} ${response.statusText}`);
         }
       
       }

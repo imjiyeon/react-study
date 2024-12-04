@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store/store';
-import { login } from './store/memberSlice';
 
 import { createContext } from 'react';
+
+import { Provider } from 'react-redux';
+import store from './store/store';
+
+import { login } from './store/memberSlice';
 
 // createContext: 여러 컴포넌트에서 값을 공유할 때 사용
 // 스토어, 슬라이스: 여러 컴포넌트에서 state를 공유할 때 사용

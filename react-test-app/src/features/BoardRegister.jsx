@@ -63,6 +63,9 @@ const handleSubmit = async (e) => {
   // formData.append("content", board.content);
   // formData.append("uploadFile", board.uploadFile);
 
+  // 게시물 등록 API 호출
+  // 등록은 post
+  // 인자: 주소, 파라미터, 헤더
   const response = await axios.post(
     // 'http://localhost:8080/board/register',
     `${host}/board/register`,
@@ -74,10 +77,10 @@ const handleSubmit = async (e) => {
     }
   });
 
-  if (response.status !== 201) {
-    throw new Error(`api error: ${response.status} ${response.statusText}`);
-  } else {
+  if (response.status === 201) {
     navigate('/board/list');
+  } else {
+    throw new Error(`api error: ${response.status} ${response.statusText}`);
   }
 
 };

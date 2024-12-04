@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom';
 import { Button, Table } from 'react-bootstrap';
 import { CustomCard, CustomContainer } from '../components/Styles';
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 
 import { Context } from '../index';
@@ -32,6 +33,9 @@ function BoardList(){
 
     // 컨텍스트에서 host 데이터 가져오기
     const { host } = useContext(Context);
+
+      // 컴포넌트가 로드될때 한번만 API를 호출하기 위해 useEffect를 사용!
+  // 인자: 실행할 코드, 실행주기(빈배열은 한번만 실행한다는 의미)
     
     // 상태만 변경하려면 useState를 사용하면됨
     // 하지만 컴포넌트가 렌더링될때 데이터 로드가 필요한 경우에는 useEffect를 함께써야함

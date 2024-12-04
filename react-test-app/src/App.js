@@ -15,6 +15,12 @@ import Login from './features/Login';
 // Outlet을 사용하는 컴포넌트를 부모 경로에 넣고 
 // 그 아래 자식 라우트를 설정한다
 // 하위 경로를 호출하면 하위 컴포넌트가 부모 컴포넌트의 Outlet 위치에 렌더링된다
+
+    // 중첩 라우트: 경로에 따라 부모와 자식 컴포넌트가 함께 렌더링 되는 구조
+    // 부모: Layout 컴포넌트
+    // 자식: Home, Register, Login...
+
+    // 예: /login => Layout 컴포넌트 + Login 컴포넌트
 function App() {
   return (
     <>

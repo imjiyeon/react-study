@@ -22,17 +22,23 @@ function BoardList(){
     // 리스트를 변수에 저장
     let list;
 
+    // 게시물 리스트 API 호출
     const getData = async () => {
 
+        // axios: ajax, fetch와 같은 통신 함수
+        // 메소드 방식에 따라 get post 메소드 사용
+        // 인자: 주소, 헤더 + 파라미터
         const response = await axios.get('http://localhost:8080/board/list', {
             headers: {
               Authorization: token
             }
           });
-          if (response.status !== 200) {
+          if (response.status === 200) {
+            list = response.data;
+          } else {
             throw new Error(`api error: ${response.status} ${response.statusText}`);
           }
-          list = response.data;
+          
       };
       getData();
     // 문제점: API 호출이 비동기적으로 이루어지기 때문에

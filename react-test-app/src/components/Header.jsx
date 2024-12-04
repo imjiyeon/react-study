@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import styled from 'styled-components';
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from "../store/memberSlice";
 
@@ -42,8 +42,8 @@ const Header = () => {
             {
               memberInfo === null ? 
               <>
-                <Nav.Link href="/register">회원가입</Nav.Link>
-                <Nav.Link href="/login">로그인</Nav.Link>
+                <Nav.Link as={NavLink} to="/register">회원가입</Nav.Link>
+                <Nav.Link as={NavLink} to="/login">로그인</Nav.Link>
               </> 
               :
               // 디스패치를 사용하여 logout 액션함수를 호출
@@ -52,18 +52,18 @@ const Header = () => {
                   dispatch(logout());
                   navigate('/');
               }}>로그아웃</Nav.Link>
-              <Nav.Link href="/">홈</Nav.Link>
+              <Nav.Link as={NavLink} to="/">홈</Nav.Link>
               </> 
             }
             {
               memberInfo !== null && memberInfo.role === 'ROLE_USER' && 
-              <Nav.Link href="/board/list">게시물관리</Nav.Link>
+              <Nav.Link as={NavLink} to="/board/list">게시물관리</Nav.Link>
             }
             {
               memberInfo !== null && memberInfo.role === 'ROLE_ADMIN' &&
               <>
-              <Nav.Link href="/board/list">게시물관리</Nav.Link>
-              <Nav.Link href="/board/list">회원관리</Nav.Link>
+              <Nav.Link as={NavLink} to="/board/list">게시물관리</Nav.Link>
+              <Nav.Link as={NavLink} to="/board/list">회원관리</Nav.Link>
               </>
             }
             </Nav>
