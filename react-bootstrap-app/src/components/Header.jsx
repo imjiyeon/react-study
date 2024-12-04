@@ -35,6 +35,13 @@ export const Header = () => {
             <Nav.Link href="/register">회원가입</Nav.Link>
             <Nav.Link href="/">홈</Nav.Link>
             <Nav.Link href="/board/list">게시물관리</Nav.Link>
+            {/* href 속성을 사용하면 페이지 전환시 전체 페이지를 새로고침하여 스토어가 초기화됨 */}
+            {/* href속성 대신 to속성을 사용하고, as속성에 NavLink를 설정해야함 */}
+            <Nav.Link as={NavLink} to="/login">로그인</Nav.Link>
+            <Nav.Link as={NavLink} to="/logout">로그아웃</Nav.Link>
+            <Nav.Link as={NavLink} to="/register">회원가입</Nav.Link>
+            <Nav.Link as={NavLink} to="/">홈</Nav.Link>
+            <Nav.Link as={NavLink} to="/board/list">게시물관리</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
